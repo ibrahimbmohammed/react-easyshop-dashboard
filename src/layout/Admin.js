@@ -9,8 +9,10 @@ import GlobalStyle from "../components/Wrapper/GlobalStyle";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { ThemeProvider } from "styled-components";
 // routes
-import routes from "../routes";
-
+import DashBoard from "../views/DashBoard/DashBoard";
+import ManageProducts from "../views/ManageProducts/ManageProducts";
+import StoreItems from "../views/StoreItems/StoreItems";
+import Login from "../views/Login/Login";
 const theme = {
   font: "",
   background: "#725374",
@@ -24,26 +26,6 @@ export default class Admin extends Component {
     super(props);
     this.state = { date: new Date(), toggle: true };
   }
-  getRoutes = routes => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={props => (
-              <prop.component
-                {...props}
-                // handle Notification
-              />
-            )}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
-  };
 
   handleToggle = () => {
     this.setState({
@@ -59,7 +41,12 @@ export default class Admin extends Component {
           <Navbar handleToggle={this.handleToggle} />
           <Wrapper>
             <SideBar />
-            <Switch>{this.getRoutes(routes)}</Switch>
+            <Switch>
+              <Route exact path="/" component={DashBoard} />
+              <Route exact path="/manage" component={ManageProducts} />
+              <Route exact path="/store" component={StoreItems} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
           </Wrapper>
           <Footer />
         </ThemeProvider>

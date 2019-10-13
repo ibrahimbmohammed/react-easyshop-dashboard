@@ -5,7 +5,6 @@
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "axios": "^0.19.0",
-    "gh-pages": "^2.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-icons": "^3.7.0",
@@ -34,6 +33,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://github.com/ibrahimbmohammed/react-easyshop-dashboard"
+  }
 }
