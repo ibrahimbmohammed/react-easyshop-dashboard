@@ -3,13 +3,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Admin from "./layout/Admin";
 import * as serviceWorker from "./serviceWorker";
-import ScrollToTop from "./components/utils/ScrollToTop";
 
 ReactDOM.render(
   <Router>
-    <ScrollToTop>
-      <Admin />
-    </ScrollToTop>
+    <Admin />
   </Router>,
 
   document.getElementById("root")
