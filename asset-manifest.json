@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/ibrahimbmohammed/react-easyshop-dashboard/static/js/main.3476b393.chunk.js",
+    "main.js.map": "/ibrahimbmohammed/react-easyshop-dashboard/static/js/main.3476b393.chunk.js.map",
+    "runtime-main.js": "/ibrahimbmohammed/react-easyshop-dashboard/static/js/runtime-main.c45e8629.js",
+    "runtime-main.js.map": "/ibrahimbmohammed/react-easyshop-dashboard/static/js/runtime-main.c45e8629.js.map",
+    "static/js/2.8219679c.chunk.js": "/ibrahimbmohammed/react-easyshop-dashboard/static/js/2.8219679c.chunk.js",
+    "static/js/2.8219679c.chunk.js.map": "/ibrahimbmohammed/react-easyshop-dashboard/static/js/2.8219679c.chunk.js.map",
+    "index.html": "/ibrahimbmohammed/react-easyshop-dashboard/index.html",
+    "precache-manifest.36babda0d140d7652231edfc65c12ad8.js": "/ibrahimbmohammed/react-easyshop-dashboard/precache-manifest.36babda0d140d7652231edfc65c12ad8.js",
+    "service-worker.js": "/ibrahimbmohammed/react-easyshop-dashboard/service-worker.js",
+    "static/media/IMG-20190919-WA0012.jpg": "/ibrahimbmohammed/react-easyshop-dashboard/static/media/IMG-20190919-WA0012.01980550.jpg",
+    "static/media/IMG-20190919-WA0013.jpg": "/ibrahimbmohammed/react-easyshop-dashboard/static/media/IMG-20190919-WA0013.37f523bc.jpg",
+    "static/media/IMG-20190919-WA0014.jpg": "/ibrahimbmohammed/react-easyshop-dashboard/static/media/IMG-20190919-WA0014.f88d7d0a.jpg",
+    "static/media/thumb.jpg": "/ibrahimbmohammed/react-easyshop-dashboard/static/media/thumb.2a7486d6.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c45e8629.js",
+    "static/js/2.8219679c.chunk.js",
+    "static/js/main.3476b393.chunk.js"
+  ]
+}
