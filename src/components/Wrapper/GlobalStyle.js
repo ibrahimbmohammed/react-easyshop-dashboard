@@ -10,8 +10,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
 
 }
+h1{
+    font-size:32px;
+}
 h2{
     font-family: 'Roboto', sans-serif;
+    font-weight:300;
+}
+p{
+    font-size:12px;
+}
+small{
+    font-size:10px;
 }
 
 `;

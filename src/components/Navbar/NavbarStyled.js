@@ -8,7 +8,6 @@ const Header = styled.header`
   width: 100%;
   height: 50px;
   background: ${props => props.theme.background};
-  border: 1px solid black;
   justify-content: space-between;
 `;
 
@@ -17,7 +16,6 @@ const NavbarBtn = styled.span`
   display: inline-block;
   width: 9.5%;
   margin: 2% 4%;
-  border: 1px solid red;
 `;
 //Bar Icon
 const BarIcon = styled(NavSvg)`
@@ -31,7 +29,6 @@ const NotificationArea = styled.div`
   display: flex;
   width: 40%;
   margin: 2% 4%;
-  border: 1px solid red;
   justify-content: space-between;
   align-items: center;
 `;
@@ -42,7 +39,6 @@ const BellIcon = styled(BellSvg)`
   width: 20px;
   height: 20px;
   cursor: pointer;
-  border: 1px solid white;
 `;
 
 const ImageContainer = styled.div`
@@ -53,12 +49,10 @@ const ImageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px solid white;
 `;
 const TextBox = styled.span`
   width: 20%;
   transform: translateX(-92%);
-  border: 1px solid white;
 
   p {
     font-style: italic;
@@ -74,3 +68,10 @@ export {
   BellIcon,
   NotificationArea
 };
+
+// border: 1px solid white;
+// border: 1px solid red;
+// border: 1px solid black;
+// border: 1px solid red;
+// border: 1px solid white;
+// border: 1px solid white;

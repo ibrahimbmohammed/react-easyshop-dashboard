@@ -5,13 +5,12 @@ const Main = styled.section`
   justify-content: space-between;
   height: 16%;
   margin-top: 1rem;
-  border: 1px solid purple;
 `;
 const ProductMain = styled(Main)`
   height: 20%;
 `;
 
-const TopCard = styled.article`
+const TopCard = styled.div`
   display: inline-block;
   width: 32%;
   height: 100%;
@@ -19,9 +18,8 @@ const TopCard = styled.article`
   background: #c4c4c4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  border: 1px solid pink;
-  h1 {
-    font-size: 13px;
+  h3 {
+    font-size: 12px;
     margin-left: 2%;
     margin-top: 20%;
   }
@@ -37,7 +35,6 @@ const ProductCards = styled.div`
   height: 100%;
   background: #c4c4c4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
   img {
     position: absolute;
     top: 0;
@@ -51,6 +48,8 @@ const ProductCards = styled.div`
     bottom: 0;
     width: 100%;
     height: 30%;
+    text-align: center;
+    padding-top: 6px;
   }
 `;
 const SectionHeaderContainer = styled.div`
@@ -58,24 +57,38 @@ const SectionHeaderContainer = styled.div`
   width: 100%;
   height: 8%;
   margin-top: 5%;
-  border: 1px solid brown;
 `;
 
 const ProductTable = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-top: 5%;
+  background: #c4c4c4;
+  border-radius: 4px;
+  ul:nth-child(even) {
+    background: white;
+  }
 `;
-const ProductList = styled.ul`
+const ProductTableHeader = styled.ul`
+  margin-top: 20px;
   display: flex;
   width: 100%;
-  height: 70px;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid yellow;
+  list-style: none;
+  font-size: 0.7rem;
+  padding: 0 5px;
+`;
+
+const ProductList = styled(ProductTableHeader)`
+  height: 70px;
+  margin-top: 0px;
+
   li {
     display: inline-block;
-    border: 1px solid gray;
+    font-size: 11px;
+    max-width: 60px;
 
     img {
       border-radius: 4px;
@@ -91,5 +104,13 @@ export {
   SectionHeaderContainer,
   ProductMain,
   ProductTable,
-  ProductList
+  ProductList,
+  ProductTableHeader
 };
+
+// border: 1px solid pink;
+// border-radius: 4px;
+// border: 1px solid purple;
+// border: 1px solid yellow;
+// border: 1px solid gray;
+// border: 1px solid brown;
