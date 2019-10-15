@@ -12,6 +12,7 @@ const Header = styled.header`
 `;
 
 // Navbar Button
+
 const NavbarBtn = styled.span`
   display: inline-block;
   width: 9.5%;
@@ -43,8 +44,9 @@ const BellIcon = styled(BellSvg)`
 
 const ImageContainer = styled.div`
   border-radius: 50%;
-  width: 33px;
-  height: 100%;
+  width: 31px;
+  height: 29px;
+
   background-image: url(${props => props.pic});
   background-size: cover;
   background-repeat: no-repeat;

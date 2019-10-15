@@ -24,7 +24,7 @@ const theme = {
 export default class Admin extends Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), toggle: true };
+    this.state = { date: new Date(), toggle: false };
   }
 
   handleToggle = () => {
@@ -39,8 +39,8 @@ export default class Admin extends Component {
           <GlobalStyle />
 
           <Navbar handleToggle={this.handleToggle} />
+          <SideBar toggle={this.state.toggle} />
           <Wrapper>
-            <SideBar />
             <Switch>
               <Route exact path="/" component={DashBoard} />
               <Route exact path="/manage" component={ManageProducts} />

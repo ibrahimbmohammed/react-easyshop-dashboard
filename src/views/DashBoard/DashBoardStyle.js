@@ -24,7 +24,7 @@ const TopCard = styled.div`
     margin-top: 20%;
   }
   p {
-    font-size: 42px;
+    font-size: 40px;
     margin-top: 14%;
     margin-left: 11%;
   }
