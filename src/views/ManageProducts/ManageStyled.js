@@ -38,7 +38,7 @@ const PictureContainer = styled.div`
     height: 50%;
     border: 1px solid purple;
   }
-  button {
+  input {
     position: absolute;
     bottom: 10%;
     left: 25%;
@@ -58,6 +58,7 @@ const FormBody = styled.div`
   align-items: center;
   justify-content: space-around;
   border: 1px solid gold;
+
   input,
   select {
     width: 90%;
