@@ -24,7 +24,7 @@ const theme = {
 export default class Admin extends Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), toggle: false };
+    this.state = { date: new Date(), toggle: true };
   }
 
   handleToggle = () => {
@@ -32,20 +32,56 @@ export default class Admin extends Component {
       toggle: !this.state.toggle
     });
   };
+
+  // sorry ,very clumpsy :(
+  CloseSideBar = () => {
+    this.handleToggle();
+  };
   render() {
     return (
       <>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-
+          <SideBar
+            toggle={this.state.toggle}
+            CloseSideBar={this.CloseSideBar}
+          />
           <Navbar handleToggle={this.handleToggle} />
-          <SideBar toggle={this.state.toggle} />
+
           <Wrapper>
             <Switch>
-              <Route exact path="/" component={DashBoard} />
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <DashBoard {...props} handleToggle={this.handleToggle} />
+                )}
+              />
+              <Route
+                exact
+                path="/manage"
+                render={props => (
+                  <ManageProducts {...props} handleToggle={this.handleToggle} />
+                )}
+              />
+              <Route
+                exact
+                path="/store"
+                render={props => (
+                  <StoreItems {...props} handleToggle={this.handleToggle} />
+                )}
+              />
+              <Route
+                exact
+                path="/login"
+                render={props => (
+                  <Login {...props} handleToggle={this.handleToggle} />
+                )}
+              />
+              {/* <Route exact path="/" component={DashBoard} />
               <Route exact path="/manage" component={ManageProducts} />
               <Route exact path="/store" component={StoreItems} />
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/login" component={Login} /> */}
             </Switch>
           </Wrapper>
           <Footer />
@@ -54,3 +90,28 @@ export default class Admin extends Component {
     );
   }
 }
+
+// how you pass props to a route component
+
+{
+  /* <Route
+path="/dashbaord"
+render={(props)=><DashBoard {...props} isAuthed={true}/>}
+/> */
+}
+
+// componentWillMount() {
+//   this.unlisten = this.props.history.listen((location, action) => {
+//     console.log("on route change");
+//   });
+// }
+// componentWillUnmount() {
+//   this.unlisten();
+// }// componentWillMount() {
+//   this.unlisten = this.props.history.listen((location, action) => {
+//     console.log("on route change");
+//   });
+// }
+// componentWillUnmount() {
+//   this.unlisten();
+// }

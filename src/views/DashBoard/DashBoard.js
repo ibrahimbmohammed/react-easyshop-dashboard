@@ -42,6 +42,9 @@ const products = [
 ];
 
 export default class DashBoard extends Component {
+  componentDidMount() {
+    this.props.handleToggle();
+  }
   render() {
     return (
       <>

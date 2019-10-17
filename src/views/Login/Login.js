@@ -1,5 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default function Login() {
-  return <div>hello Login</div>;
+export default class Login extends Component {
+  componentDidMount() {
+    this.props.handleToggle();
+  }
+  render() {
+    return <div></div>;
+  }
 }

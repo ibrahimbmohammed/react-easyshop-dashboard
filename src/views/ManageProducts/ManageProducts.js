@@ -9,7 +9,7 @@ import {
   PictureContainer
 } from "./ManageStyled";
 import pic from "../../images/thumb.jpg";
-firebase.initializeApp(config);
+
 export default class ManageProducts extends Component {
   constructor(props) {
     super(props);
@@ -23,17 +23,68 @@ export default class ManageProducts extends Component {
       product_cat: "",
       product_color: "others",
       product_new: true,
-      product_quantity: 10
+      product_quantity: 10,
+      pic: pic,
+      imagePreviewUrl: ""
     };
   }
-  fileSelectedHandler = e => {
-    this.setState({
-      image: e.target.files[0]
-    });
-  };
-  imageUploadHandler=e=>{
-
+  componentDidMount() {
+    this.props.handleToggle();
   }
+  fileSelectedHandler = e => {
+    // e.preventDefault();
+
+    let reader = new FileReader();
+    let image = e.target.files[0];
+    console.log(image);
+    reader.onloadend = () => {
+      this.setState(
+        {
+          image: image,
+          imagePreviewUrl: reader.result
+        },
+        () => {
+          this.setState({
+            pic: this.state.imagePreviewUrl
+          });
+          this.imageUploadHandler();
+        }
+      );
+    };
+
+    reader.readAsDataURL(image);
+    // if (this.state.imagePreviewUrl) {
+    //   this.setState({
+    //     pic: this.state.imagePreviewUrl
+    //   });
+    // }
+
+    // this.setState({
+    //   image: e.target.files[0]
+    // });
+    // if (this.state.image) {
+    //   this.imageUploadHandler();
+    // }
+  };
+  imageUploadHandler = () => {
+    const fd = new FormData();
+    fd.append("image", this.state.image, this.state.image.name);
+    axios
+      .post(
+        `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products/image
+    `,
+        fd
+      )
+      .then(res => {
+        return res.data.imageUrl;
+      })
+      .then(imageUrl => {
+        this.setState({
+          pic: imageUrl
+        });
+      })
+      .then(console.log("image upload successful"));
+  };
 
   handleChange = event => {
     const name = event.target.name;
@@ -60,10 +111,11 @@ export default class ManageProducts extends Component {
           <h3>Add Ankara</h3>
         </HeaderText>
         <FormContainer>
-          <PictureContainer pic={pic}>
+          <PictureContainer pic={this.state.pic}>
             <div></div>
             <span></span>
             <input type="file" onChange={this.fileSelectedHandler} />
+            <button> upload</button>
           </PictureContainer>
           <FormBody>
             <form onSubmit={this.onSubmit}>

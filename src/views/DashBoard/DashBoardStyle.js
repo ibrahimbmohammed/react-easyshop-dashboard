@@ -38,8 +38,8 @@ const ProductCards = styled.div`
   img {
     position: absolute;
     top: 0;
-    width: 100%;
-    height: 70%;
+    max-width: 100%;
+    height: auto;
     border-radius: 4px 4px 0 0;
   }
 

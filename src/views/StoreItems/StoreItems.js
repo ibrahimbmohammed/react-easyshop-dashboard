@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from "react";
 
-export default function StoreItems() {
-    return (
-        <div>
-            hello from StoreItems
-        </div>
-    )
+export default class StoreItems extends Component {
+  componentDidMount() {
+    this.props.handleToggle();
+  }
+  render() {
+    return <div></div>;
+  }
 }

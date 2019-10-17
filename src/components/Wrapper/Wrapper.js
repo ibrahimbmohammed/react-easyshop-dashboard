@@ -5,4 +5,10 @@ export default styled.div`
   margin: 0 auto;
   /* border: 1px solid blue; */
   height: 100vh;
+
+  @media all and (min-width: 768px) and (max-width: 1199px) {
+    width: 80%;
+    overflow: hidden;
+    border: 1px solid blue;
+  }
 `;

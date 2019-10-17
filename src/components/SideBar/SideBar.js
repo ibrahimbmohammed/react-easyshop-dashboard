@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SideBarBody, SideBarElement } from "./SideBarStyle";
+import { SideBarBody, SideBarElement, CancleBtn } from "./SideBarStyle";
 
-export default function SideBar({ toggle }) {
+export default function SideBar({ toggle, CloseSideBar }) {
   if (toggle) {
     return (
       <SideBarBody toggle>
+        <CancleBtn onClick={() => CloseSideBar()} />
         <SideBarElement>
           <Link to="/">Dashboard</Link>
         </SideBarElement>
@@ -21,5 +22,5 @@ export default function SideBar({ toggle }) {
       </SideBarBody>
     );
   }
-  return null;
+  return <SideBarBody />;
 }
