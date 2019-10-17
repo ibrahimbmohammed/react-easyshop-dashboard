@@ -107,8 +107,8 @@ export default class DashBoard extends Component {
             <li>Name</li>
             <li>Sold</li>
             <li>Sold</li>
-            <li>Available</li>
             <li>Date</li>
+            <li>Available</li>
           </ProductTableHeader>
           <br></br>
           <hr></hr>

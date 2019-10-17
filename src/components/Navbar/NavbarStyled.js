@@ -9,6 +9,9 @@ const Header = styled.header`
   height: 50px;
   background: ${props => props.theme.background};
   justify-content: space-between;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
 `;
 
 // Navbar Button
@@ -51,6 +54,7 @@ const ImageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 const TextBox = styled.span`
   width: 20%;

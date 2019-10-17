@@ -78,13 +78,8 @@ export default class Admin extends Component {
                   <Login {...props} handleToggle={this.handleToggle} />
                 )}
               />
-              {/* <Route exact path="/" component={DashBoard} />
-              <Route exact path="/manage" component={ManageProducts} />
-              <Route exact path="/store" component={StoreItems} />
-              <Route exact path="/login" component={Login} /> */}
             </Switch>
           </Wrapper>
-          <Footer />
         </ThemeProvider>
       </>
     );

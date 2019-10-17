@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { FaTimes as CancleBtnSvg } from "react-icons/fa";
 
 const SideBarBody = styled.div`
-  /* display: ${props => (props.toggle ? "flex" : "none")}; */
+  
   display:flex;
   position: absolute;
+  top:0;
   flex-direction: column;
   padding-top: 30px;
   width:  ${props => (props.toggle ? " 50% " : "0")}
@@ -25,13 +26,16 @@ const SideBarElement = styled.span`
   display: flex;
   width: 60;
   height: 60px;
-  transform: translateX(-50px);
+  transform: ${props =>
+    props.toggle ? "translateX(0px);" : "translateX(-30px)"};
   justify-content: center;
   margin-top: 20px;
   padding: 2em;
   background: black;
-  transition: all 1s ease-in-out;
+  transition: all 10s ease-in-out;
   opacity: 0.5;
+  a {
+  }
 `;
 const CancleBtn = styled(CancleBtnSvg)`
   position: absolute;

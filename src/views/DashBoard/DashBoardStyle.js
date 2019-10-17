@@ -49,14 +49,27 @@ const ProductCards = styled.div`
     width: 100%;
     height: 30%;
     text-align: center;
-    padding-top: 6px;
+
+    padding-top: 13px;
+    p {
+      font-size: 10px;
+    }
   }
 `;
 const SectionHeaderContainer = styled.div`
   display: block;
   width: 100%;
   height: 8%;
-  margin-top: 5%;
+  margin-top: 8%;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: montserrat;
+    margin-top: 15px;
+  }
+  span {
+  }
 `;
 
 const ProductTable = styled.div`
