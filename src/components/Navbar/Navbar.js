@@ -6,16 +6,20 @@ import {
   TextBox,
   BarIcon,
   BellIcon,
-  NotificationArea
+  NotificationArea,
+  SearchField
 } from "./NavbarStyled";
 import pic from "../../images/thumb.jpg";
-export default function Navbar({ handleToggle }) {
+export default function Navbar({ handleToggle, visible }) {
+  console.log(visible);
   return (
     <div>
       <Header>
         <NavbarBtn onClick={() => handleToggle()}>
           <BarIcon />
         </NavbarBtn>
+
+        <SearchField />
         <NotificationArea>
           <BellIcon />
           <ImageContainer pic={pic}></ImageContainer>

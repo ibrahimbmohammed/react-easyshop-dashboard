@@ -7,9 +7,14 @@ export default styled.div`
   /* border: 1px solid blue; */
   height: 100vh;
 
-  @media all and (min-width: 768px) and (max-width: 1199px) {
-    width: 80%;
+  @media all and (min-width: 768px) {
+    width: 75%;
+    position: absolute;
+    margin-left: 23%;
+    height: 150vh;
     overflow: hidden;
-    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    max-height: 1000px;
   }
 `;

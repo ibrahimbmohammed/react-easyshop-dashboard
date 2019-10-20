@@ -24,13 +24,46 @@ const theme = {
 export default class Admin extends Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), toggle: true };
+    this.state = {
+      date: new Date(),
+      toggle: true,
+      currentWidth: "",
+      prevScrollpos: window.pageYOffset,
+      visible: true
+    };
   }
 
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener("scroll", this.handleScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+  handleScroll = () => {
+    const { prevScrollpos } = this.state;
+
+    const currentScrollPos = window.pageYOffset;
+    const visible = prevScrollpos > currentScrollPos;
+
+    this.setState({
+      prevScrollpos: currentScrollPos,
+      visible
+    });
+  };
+  updateDimensions = () => {
+    this.setState({ currentWidth: window.innerWidth });
+  };
   handleToggle = () => {
     this.setState({
       toggle: !this.state.toggle
     });
+    this.handleInnerWidth();
+  };
+  handleInnerWidth = () => {
+    let mywidth = window.innerWidth;
+    console.log(mywidth);
   };
 
   // sorry ,very clumpsy :(
@@ -45,8 +78,12 @@ export default class Admin extends Component {
           <SideBar
             toggle={this.state.toggle}
             CloseSideBar={this.CloseSideBar}
+            currentWidth={this.state.currentWidth}
           />
-          <Navbar handleToggle={this.handleToggle} />
+          <Navbar
+            handleToggle={this.handleToggle}
+            visibles={this.state.visible}
+          />
 
           <Wrapper>
             <Switch>

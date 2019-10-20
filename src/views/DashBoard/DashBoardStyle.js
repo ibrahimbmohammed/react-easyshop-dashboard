@@ -1,13 +1,27 @@
 import styled from "styled-components";
-
+const dashboarWrapper = styled.div`
+  width: 70%;
+  display: flex;
+`;
 const Main = styled.section`
   display: flex;
   justify-content: space-between;
   height: 16%;
   margin-top: 1rem;
+
+  @media all and (min-width: 768px) {
+    width: 100%;
+    height: 26%;
+  }
 `;
 const ProductMain = styled(Main)`
   height: 20%;
+
+  @media all and (min-width: 768px) {
+    width: 100%;
+    height: 35%;
+    margin-bottom: -10%;
+  }
 `;
 
 const TopCard = styled.div`
@@ -18,42 +32,51 @@ const TopCard = styled.div`
   background: #c4c4c4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+  background: transparent;
+  @media all and (min-width: 768px) {
+    width: 230px;
+    height: 150px;
+    display: flex;
+    background: transparent;
+
+    div {
+      margin-left: -5px;
+    }
+  }
   h3 {
     font-size: 12px;
-    margin-left: 2%;
+    margin-left: 22%;
     margin-top: 20%;
+    @media all and (min-width: 768px) {
+      font-size: 22px;
+      margin-left: 2%;
+      margin-top: 20%;
+    }
   }
   p {
     font-size: 40px;
     margin-top: 14%;
     margin-left: 11%;
   }
+  div {
+    width: 50%;
+    margin-right: 40px;
+  }
 `;
 const ProductCards = styled.div`
   position: relative;
   width: 30%;
-  height: 100%;
-  background: #c4c4c4;
+  height: 80%;
+  max-height: 150px;
+  background-image: url(${props => props.pic});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  img {
-    position: absolute;
-    top: 0;
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px 4px 0 0;
-  }
 
-  span {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 30%;
-    text-align: center;
-
-    padding-top: 13px;
-    p {
-      font-size: 10px;
-    }
+  @media all and (min-width: 768px) {
+    height: 50%;
+    padding-bottom: -30px;
   }
 `;
 const SectionHeaderContainer = styled.div`
@@ -70,6 +93,21 @@ const SectionHeaderContainer = styled.div`
   }
   span {
   }
+  @media all and (min-width: 768px) and (max-width: 1440px) {
+    margin-top: -10%;
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      font-family: montserrat;
+      margin-top: 15px;
+    }
+    div,
+    svg {
+      width: 30%;
+      height: 40%;
+      display: none;
+    }
+  }
 `;
 
 const ProductTable = styled.div`
@@ -81,6 +119,9 @@ const ProductTable = styled.div`
   border-radius: 4px;
   ul:nth-child(even) {
     background: white;
+  }
+  @media all and (min-width: 768px) {
+    margin-top: 10px;
   }
 `;
 const ProductTableHeader = styled.ul`

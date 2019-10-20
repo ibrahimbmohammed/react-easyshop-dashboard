@@ -9,9 +9,14 @@ const Header = styled.header`
   height: 50px;
   background: ${props => props.theme.background};
   justify-content: space-between;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   position: fixed;
   top: 0;
+  z-index: 2;
+  @media all and (min-width: 768px) {
+    height: 84px;
+    background: transparent;
+  }
 `;
 
 // Navbar Button
@@ -20,12 +25,34 @@ const NavbarBtn = styled.span`
   display: inline-block;
   width: 9.5%;
   margin: 2% 4%;
+  background: transparent;
 `;
 //Bar Icon
 const BarIcon = styled(NavSvg)`
   width: 100%;
   height: 100%;
   cursor: pointer;
+  background: transparent;
+  @media all and (min-width: 768px) and (max-width: 1199px) {
+    display: none;
+  }
+`;
+
+const SearchField = styled.span`
+  width: 40%;
+  height: 40px;
+  display: none;
+  margin-top: 15px;
+
+  input {
+    width: 100%;
+    height: 100%;
+  }
+  @media all and (min-width: 768px) {
+    display: block;
+    border-radius: 30px 30px 30px 30px;
+    border: none;
+  }
 `;
 
 //Notification  Area
@@ -35,6 +62,12 @@ const NotificationArea = styled.div`
   margin: 2% 4%;
   justify-content: space-between;
   align-items: center;
+  @media all and (min-width: 768px) {
+    width: 15%;
+    margin: 2% 2%;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 // future fix nest img & text-box in a seperate div
 /*TODO*/
@@ -43,6 +76,7 @@ const BellIcon = styled(BellSvg)`
   width: 20px;
   height: 20px;
   cursor: pointer;
+  background: transparent;
 `;
 
 const ImageContainer = styled.div`
@@ -62,6 +96,7 @@ const TextBox = styled.span`
 
   p {
     font-style: italic;
+    background: transparent;
   }
 `;
 
@@ -72,7 +107,8 @@ export {
   TextBox,
   BarIcon,
   BellIcon,
-  NotificationArea
+  NotificationArea,
+  SearchField
 };
 
 // border: 1px solid white;

@@ -8,7 +8,16 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-family: 'Roboto Condensed', sans-serif;
     font-family: 'Montserrat', sans-serif;
-
+    background:#F4F5F9;
+}
+div{
+    background:transparent;
+}
+span{
+    background:transparent;
+}
+ul,li{
+    background:transparent;
 }
 h1{
     font-size:32px;

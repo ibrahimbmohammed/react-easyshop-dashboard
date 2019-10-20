@@ -9,6 +9,10 @@ import {
   ProductList,
   ProductTableHeader
 } from "./DashBoardStyle";
+import LineChart from "../../components/GraphComponents/LineChart";
+import BarChart from "../../components/GraphComponents/BarChart";
+// import PieChart from "../../components/GraphComponents/PieChart";
+import PieChart from "../../components/GraphComponents/Donut";
 import ankara from "../../images/IMG-20190919-WA0012.jpg";
 import ankara2 from "../../images/IMG-20190919-WA0013.jpg";
 import ankara3 from "../../images/IMG-20190919-WA0014.jpg";
@@ -42,28 +46,58 @@ const products = [
 ];
 
 export default class DashBoard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentWidth: ""
+    };
+  }
   componentDidMount() {
     this.props.handleToggle();
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions);
   }
+  updateDimensions = () => {
+    this.setState({ currentWidth: window.innerWidth });
+  };
+
   render() {
+    const currentWidth = this.state.currentWidth;
+    console.log(currentWidth);
     return (
       <>
         <Main>
-          <TopCard>
-            {" "}
-            <h3>Custormers</h3>
-            <p>52</p>
-          </TopCard>
-          <TopCard>
-            {" "}
-            <h3>Orders</h3>
-            <p>34</p>
-          </TopCard>
-          <TopCard>
-            {" "}
-            <h3>Store Items</h3>
-            <p>75</p>
-          </TopCard>
+          {currentWidth <= 738 ? (
+            <>
+              {" "}
+              <TopCard>
+                <h3>Custormers</h3>
+                <p>111</p>
+              </TopCard>
+              <TopCard>
+                <h3>Orders</h3>
+                <p>111</p>
+              </TopCard>
+              <TopCard>
+                <h3>Store Items</h3>
+                <p>111</p>
+              </TopCard>
+            </>
+          ) : (
+            <>
+              <TopCard>
+                <div>
+                  <LineChart />
+                </div>
+              </TopCard>
+              <TopCard>
+                <BarChart />
+              </TopCard>
+              <TopCard>
+                <PieChart />
+              </TopCard>
+            </>
+          )}
         </Main>
         <SectionHeaderContainer>
           <h2>Top selling products</h2>
@@ -73,26 +107,14 @@ export default class DashBoard extends Component {
         </SectionHeaderContainer>
 
         <ProductMain>
-          <ProductCards>
-            <img src={ankara} alt="girl" />
-
-            <span>
-              <p>African Wax chiganvy</p>
-            </span>
+          <ProductCards pic={ankara}>
+            {/* <img src={ankara} alt="girl" /> */}
           </ProductCards>
-          <ProductCards>
-            <img src={ankara2} alt="girl" />
-
-            <span>
-              <p>African Wax chiganvy</p>
-            </span>
+          <ProductCards pic={ankara2}>
+            {/* <img src={ankara2} alt="girl" /> */}
           </ProductCards>
-          <ProductCards>
-            <img src={ankara3} alt="girl" />
-
-            <span>
-              <p>African Wax chiganvy</p>
-            </span>
+          <ProductCards pic={ankara3}>
+            {/* <img src={ankara3} alt="girl" /> */}
           </ProductCards>
         </ProductMain>
         <SectionHeaderContainer>
