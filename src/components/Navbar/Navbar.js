@@ -18,7 +18,6 @@ export default function Navbar({ handleToggle, visible }) {
         <NavbarBtn onClick={() => handleToggle()}>
           <BarIcon />
         </NavbarBtn>
-
         <SearchField />
         <NotificationArea>
           <BellIcon />

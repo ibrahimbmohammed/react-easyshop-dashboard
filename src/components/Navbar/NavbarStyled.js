@@ -43,6 +43,7 @@ const SearchField = styled.span`
   height: 40px;
   display: none;
   margin-top: 15px;
+  
 
   input {
     width: 100%;

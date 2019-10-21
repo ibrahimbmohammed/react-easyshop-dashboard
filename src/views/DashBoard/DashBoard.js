@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import {
   Main,
   TopCard,
@@ -16,6 +18,7 @@ import PieChart from "../../components/GraphComponents/Donut";
 import ankara from "../../images/IMG-20190919-WA0012.jpg";
 import ankara2 from "../../images/IMG-20190919-WA0013.jpg";
 import ankara3 from "../../images/IMG-20190919-WA0014.jpg";
+import Axios from "axios";
 
 // dummy data
 const products = [
@@ -49,19 +52,39 @@ export default class DashBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentWidth: ""
+      currentWidth: "",
+      items: [],
+      isLoading: true,
+      error: false
     };
   }
   componentDidMount() {
     this.props.handleToggle();
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions);
+    this.handleData();
   }
+  handleData = () => {
+    Axios.get(
+      `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products
+    `
+    )
+      .then(doc => {
+        this.setState({
+          items: doc.data,
+          isLoading: false
+        });
+      })
+      .catch(err => console.error(err));
+  };
   updateDimensions = () => {
     this.setState({ currentWidth: window.innerWidth });
   };
 
   render() {
+    dayjs.extend(relativeTime);
+    const { isLoading, items, error } = this.state;
+    console.log(items);
     const currentWidth = this.state.currentWidth;
     console.log(currentWidth);
     return (
@@ -134,20 +157,22 @@ export default class DashBoard extends Component {
           </ProductTableHeader>
           <br></br>
           <hr></hr>
-          {products.map((product, i) => {
-            return (
-              <ProductList key={i}>
-                <li>
-                  <img src={product.pic} alt="girl"></img>
-                </li>
-                <li>{product.name}</li>
-                <li>{product.sold}</li>
-                <li>{product.time}</li>
-                <li>{product.available}</li>
-                <li>{product.date}</li>
-              </ProductList>
-            );
-          })}
+          {!isLoading
+            ? items.map((item, i) => {
+                return (
+                  <ProductList key={i}>
+                    <li>
+                      <img src={item.image_url} alt="girl"></img>
+                    </li>
+                    <div>{item.product_cat}</div>
+                    <div>{item.product_quantity}</div>
+                    <div>{item.product_quantity}</div>
+                    <div>{dayjs(item.createdAt).fromNow()}</div>
+                    <div>{item.product_new}</div>
+                  </ProductList>
+                );
+              })
+            : null}
         </ProductTable>
       </>
     );

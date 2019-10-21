@@ -34,7 +34,8 @@ export default class AddAnkara extends Component {
       picLoading: false,
       dataLoading: false,
       successResponse: "",
-      error: ""
+      error: "",
+      product_token: ""
     };
   }
   componentDidMount() {
@@ -54,7 +55,8 @@ export default class AddAnkara extends Component {
         },
         () => {
           this.setState({
-            pic: this.state.imagePreviewUrl
+            pic: this.state.imagePreviewUrl,
+            picLoading: true
           });
           this.imageUploadHandler();
         }
@@ -63,7 +65,18 @@ export default class AddAnkara extends Component {
 
     reader.readAsDataURL(image);
   };
+  handleClearError = () => {
+    this.setState({
+      error: ""
+    });
+  };
+  handleClearToken = () => {
+    this.setState({
+      product_token: ""
+    });
+  };
   imageUploadHandler = () => {
+    this.handleClearError();
     const fd = new FormData();
     fd.append("image", this.state.image, this.state.image.name);
     axios
@@ -77,12 +90,17 @@ export default class AddAnkara extends Component {
       })
       .then(data => {
         this.setState({
+          picLoading: false,
           pic: data.imageUrl,
-          successResponse: data.message,
-          error: data.error
+          successResponse: data.message
         });
       })
-      .then(console.log("image upload successful"));
+      .catch(error => {
+        this.setState({
+          error: error
+        });
+        throw error;
+      });
   };
 
   handleChange = event => {
@@ -96,6 +114,7 @@ export default class AddAnkara extends Component {
   ////////  Data Submit Ankara//////////
   onSubmit = event => {
     event.preventDefault();
+    this.handleClearToken();
     let i = 0;
     if (this.state.product_cat == "Chiganvy") {
       i = 0;
@@ -123,22 +142,46 @@ export default class AddAnkara extends Component {
         "https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products",
         newItem
       )
-      .then(res => console.log(res.data));
+      .then(res => {
+        this.setState({ product_token: res.data });
+      })
+      .catch(err => console.error(err));
   };
 
   render() {
+    const { picLoading, error, product_token } = this.state;
+    console.log(error);
+    console.log(product_token);
     return (
       <>
         <HeaderText>
           <h3>Add Ankara</h3>
         </HeaderText>
         <FormContainer>
-          <PictureContainer pic={this.state.pic}>
-            <div></div>
-            <span></span>
-            <input type="file" onChange={this.fileSelectedHandler} />
-            <button> upload</button>
-          </PictureContainer>
+          {!picLoading ? (
+            <PictureContainer pic={this.state.pic}>
+              <div></div>
+              <span></span>
+              <input type="file" onChange={this.fileSelectedHandler} />
+              <button> upload</button>
+            </PictureContainer>
+          ) : (
+            <PictureContainer>
+              <div>
+                {error ? (
+                  <h4>
+                    oopps! something went wrong <br />
+                    please try again
+                  </h4>
+                ) : (
+                  <CircleLoad color={"#0063ff"} />
+                )}
+              </div>
+              <span></span>
+              <input type="file" onChange={this.fileSelectedHandler} />
+              {error ? <button> retry</button> : <button> upload</button>}
+            </PictureContainer>
+          )}
 
           <FormBody>
             <form onSubmit={this.onSubmit}>
@@ -167,8 +210,7 @@ export default class AddAnkara extends Component {
                 <option value="5000">₦ 5500</option>
                 <option value="10000">₦10000</option>
               </select>
-
-              <button>Add</button>
+              {product_token ? <button>success</button> : <button>Add</button>}
             </form>
           </FormBody>
         </FormContainer>
@@ -187,8 +229,5 @@ AddAnkara.defaultProps = {
   product_new: true,
   product_quantity: 3
 };
-{
-  /* <CircleLoad />; */
-}
 
 //https://us-central1-easy-shop-53cc2.cloudfunctions.net/api

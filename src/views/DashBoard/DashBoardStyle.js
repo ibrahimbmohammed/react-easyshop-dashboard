@@ -132,7 +132,16 @@ const ProductTableHeader = styled.ul`
   align-items: center;
   list-style: none;
   font-size: 0.7rem;
+  font-weight: 900;
+  color: black;
+
   padding: 0 5px;
+  p {
+    font-size: 0.7rem;
+    font-weight: 900;
+
+    background: transparent;
+  }
 `;
 
 const ProductList = styled(ProductTableHeader)`

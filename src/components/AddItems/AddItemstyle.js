@@ -3,7 +3,10 @@ import { Circle, Heart, Hourglass, Ellipsis } from "react-spinners-css";
 
 const CircleLoad = styled(Ellipsis)`
   color: #0063ff;
+
   width: 50px;
+  margin-left: 38%;
+  margin-top: 20%;
 `;
 const HeaderText = styled.span`
   width: 100%;
@@ -24,6 +27,7 @@ const FormContainer = styled.div`
   height: 34.4%;
   border-radius: 10px;
   border: 1px solid #0063ff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   margin: 0 auto;
 `;
@@ -32,11 +36,17 @@ const PictureContainer = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-right: 1px solid #0063ff;
+  h4 {
+    margin-top: 20%;
+    text-align: center;
+  }
 
   div {
     width: 100%;
-    height: 60%;
+    height: 70%;
     background-image: url(${props => props.pic});
     background-size: cover;
     background-repeat: no-repeat;
@@ -46,7 +56,7 @@ const PictureContainer = styled.div`
   }
   span {
     width: 100%;
-    height: 40%;
+    height: 30%;
   }
 
   button {
@@ -93,14 +103,12 @@ const FormBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
   text-align: center;
 
   input,
   select {
     width: 90%;
     height: 35px;
-
     border-radius: 4px;
     border: 0.5px solid #b0b0b0;
     background: rgba(255, 255, 255, 0.485366);
