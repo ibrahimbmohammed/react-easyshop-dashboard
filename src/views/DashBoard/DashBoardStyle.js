@@ -94,9 +94,9 @@ const SectionHeaderContainer = styled.div`
   span {
   }
   @media all and (min-width: 768px) and (max-width: 1440px) {
-    margin-top: -10%;
+    margin-top: -8%;
     h2 {
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 600;
       font-family: montserrat;
       margin-top: 15px;
@@ -117,6 +117,11 @@ const ProductTable = styled.div`
   margin-top: 5%;
   background: #c4c4c4;
   border-radius: 4px;
+
+  li {
+    margin-right: 24.5%;
+    text-align: center;
+  }
   ul:nth-child(even) {
     background: white;
   }
@@ -124,38 +129,55 @@ const ProductTable = styled.div`
     margin-top: 10px;
   }
 `;
-const ProductTableHeader = styled.ul`
+const ProductTableHeader = styled.div`
   margin-top: 20px;
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 900;
   color: black;
 
-  padding: 0 5px;
-  p {
-    font-size: 0.7rem;
-    font-weight: 900;
-
-    background: transparent;
+  div {
+    margin-top: 20px;
+    display: flex;
+    width: 80%;
+    margin-right: -50px;
+    border: 1px solid green;
+    justify-content: center;
   }
 `;
 
 const ProductList = styled(ProductTableHeader)`
+  border: 1px solid yellow;
   height: 70px;
   margin-top: 0px;
-
-  li {
+  margin-left: 0px;
+  font-size: 0.7rem;
+  span {
     display: inline-block;
-    font-size: 11px;
-    max-width: 60px;
+    width: 18%;
+    height: 90%;
+    background-image: url(${props => props.pic});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5px 5px 5px 5px;
+  }
 
-    img {
-      border-radius: 4px;
-      width: 100%;
+  div {
+    font-size: 11px;
+    max-width: 70px;
+    border: 1px solid red;
+  }
+
+  @media all and (min-width: 768px) {
+    justify-content: space-between;
+    div {
+      justify-content: center;
+      border: 1px solid brown;
     }
   }
 `;

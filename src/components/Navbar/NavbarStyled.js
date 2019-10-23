@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FiAlignLeft as NavSvg } from "react-icons/fi";
 import { MdNotificationsActive as BellSvg } from "react-icons/md";
+import { FaShoppingBasket as MainIconSvg } from "react-icons/fa";
 
 //Header section
 const Header = styled.header`
@@ -16,6 +17,14 @@ const Header = styled.header`
   @media all and (min-width: 768px) {
     height: 84px;
     background: transparent;
+    h5 {
+      display: inline-block;
+      position: absolute;
+      margin-left: 80px;
+      margin-top: 30px;
+      background: transparent;
+      color: #0063ff;
+    }
   }
 `;
 
@@ -26,6 +35,20 @@ const NavbarBtn = styled.span`
   width: 9.5%;
   margin: 2% 4%;
   background: transparent;
+`;
+//MAIN ICON
+const MainIcon = styled(MainIconSvg)`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: transparent;
+  @media all and (min-width: 768px) and (max-width: 1199px) {
+    display: inline-block;
+    color: #0063ff;
+    width: 35px;
+    height: 35px;
+    margin-top: -2px;
+  }
 `;
 //Bar Icon
 const BarIcon = styled(NavSvg)`
@@ -43,16 +66,22 @@ const SearchField = styled.span`
   height: 40px;
   display: none;
   margin-top: 15px;
-  
+  border-radius: 30px 30px 30px 30px;
 
-  input {
-    width: 100%;
-    height: 100%;
-  }
   @media all and (min-width: 768px) {
     display: block;
-    border-radius: 30px 30px 30px 30px;
+    color: #0063ff;
     border: none;
+    input {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px 30px 30px 30px;
+      outline: none;
+      color: #0063ff;
+      background: #0063ff;
+      border: none;
+      opacity: 0.5;
+    }
   }
 `;
 
@@ -109,7 +138,8 @@ export {
   BarIcon,
   BellIcon,
   NotificationArea,
-  SearchField
+  SearchField,
+  MainIcon
 };
 
 // border: 1px solid white;

@@ -10,8 +10,8 @@ export default styled.div`
   @media all and (min-width: 768px) {
     width: 75%;
     position: absolute;
-    margin-left: 23%;
-    height: 150vh;
+    margin-left: 20%;
+    height: 900px;
     overflow: hidden;
     display: flex;
     flex-direction: column;

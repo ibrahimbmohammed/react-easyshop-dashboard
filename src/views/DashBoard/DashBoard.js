@@ -148,27 +148,28 @@ export default class DashBoard extends Component {
         </SectionHeaderContainer>
         <ProductTable>
           <ProductTableHeader>
-            <li>Product</li>
-            <li>Name</li>
-            <li>Sold</li>
-            <li>Sold</li>
-            <li>Date</li>
-            <li>Available</li>
+            <span>
+              <li>Product</li>
+            </span>
+
+            <div>
+              <li>Name</li>
+              <li>sold Already</li>
+              <li>Date</li>
+            </div>
           </ProductTableHeader>
           <br></br>
           <hr></hr>
           {!isLoading
             ? items.map((item, i) => {
                 return (
-                  <ProductList key={i}>
-                    <li>
-                      <img src={item.image_url} alt="girl"></img>
-                    </li>
-                    <div>{item.product_cat}</div>
-                    <div>{item.product_quantity}</div>
-                    <div>{item.product_quantity}</div>
-                    <div>{dayjs(item.createdAt).fromNow()}</div>
-                    <div>{item.product_new}</div>
+                  <ProductList pic={item.image_url} key={i}>
+                    <span></span>
+                    <div>
+                      <div>{item.product_cat}</div>
+                      <div>{item.product_quantity}</div>
+                      <div>{dayjs(item.createdAt).fromNow()}</div>
+                    </div>
                   </ProductList>
                 );
               })

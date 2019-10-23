@@ -24,7 +24,7 @@ const SideBarBody = styled.div`
   @media all and (min-width: 768px)  {
     display: ${props => (props.toggle ? "flex" : "flex")};
     position:  fixed;
-    width: 22%;
+    width: 16%;
     top:12%;
     z-index:0;
     height:88%;
@@ -35,13 +35,14 @@ const SideBarBody = styled.div`
 
 const SideBarElement = styled.span`
   display: flex;
+  position: relative;
   width: 80;
   height: 60px;
   transform: ${props =>
     props.toggle ? "translateX(0px)" : "translateX(-30px)"};
   justify-content: center;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   font-family: montserrat;
   padding: 2em;
@@ -60,8 +61,15 @@ const SideBarElement = styled.span`
       color: white;
       font-weight: bold;
       background: transparent;
-      margin-left: 1px;
+      /* margin-left: 45px;
+      margin-top: -85px;
+      padding-top: -110px; */
+      /* padding-left: 10px; */
+      position: absolute;
       padding-left: 10px;
+      padding-top: 3px;
+      width: 100;
+
       outline: none;
     }
   }

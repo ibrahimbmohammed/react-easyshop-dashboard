@@ -72,7 +72,8 @@ export default class AddAnkara extends Component {
   };
   handleClearToken = () => {
     this.setState({
-      product_token: ""
+      product_token: "",
+      dataLoading: true
     });
   };
   imageUploadHandler = () => {
@@ -144,6 +145,12 @@ export default class AddAnkara extends Component {
       )
       .then(res => {
         this.setState({ product_token: res.data });
+        if (!this.state.product_token) {
+          // this.setState({ product_token: res.data });
+          console.log("success");
+        } else {
+          console.log("fail");
+        }
       })
       .catch(err => console.error(err));
   };

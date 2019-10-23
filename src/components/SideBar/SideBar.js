@@ -46,7 +46,7 @@ export default function SideBar({ toggle, CloseSideBar, currentWidth }) {
 
         <SideBarElement>
           <InventoryIcon />
-          <Link to="/manage">Add Items</Link>
+          <Link to="/manage">Add </Link>
         </SideBarElement>
 
         <SideBarElement>

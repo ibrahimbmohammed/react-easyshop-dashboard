@@ -51,6 +51,7 @@ export default class Admin extends Component {
       prevScrollpos: currentScrollPos,
       visible
     });
+    console.log(this.state.visible);
   };
   updateDimensions = () => {
     this.setState({ currentWidth: window.innerWidth });
@@ -82,7 +83,7 @@ export default class Admin extends Component {
           />
           <Navbar
             handleToggle={this.handleToggle}
-            visibles={this.state.visible}
+            visible={this.state.visible}
           />
 
           <Wrapper>
