@@ -16,5 +16,7 @@ export default styled.div`
     display: flex;
     flex-direction: column;
     max-height: 1000px;
+    overflow: visible;
+    font-family: montserrat;
   }
 `;

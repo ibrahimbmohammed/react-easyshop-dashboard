@@ -18,7 +18,8 @@ const theme = {
   background: "#725374",
   backgroundColor: "white",
   color: "",
-  fontWeight: ""
+  fontWeight: "",
+  fontFamily: "montserrat"
 };
 
 export default class Admin extends Component {

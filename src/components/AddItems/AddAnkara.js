@@ -7,14 +7,18 @@ import {
   FormContainer,
   FormBody,
   PictureContainer,
-  CircleLoad
+  CircleLoad,
+  RingLoad
 } from "./AddItemstyle";
 import pic from "../../images/thumb.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const des = [
   "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
   "100% Cotton African Fabric Guaranteed Real Dutch Wax Veritable Wax High Quality African Print Fabric ",
   "2019 New Arrival Polyester Real Dutch Wax Fabric High Quality African Dutch Wax Fashion Print fabric"
 ];
+toast.configure();
 export default class AddAnkara extends Component {
   constructor(props) {
     super(props);
@@ -24,9 +28,10 @@ export default class AddAnkara extends Component {
       image: "",
       image_url: "",
       name: "",
-      price: 2,
+      price: "",
       product_cat: "",
-      product_color: "others",
+      product_sec_cat: "ankara",
+      product_color: "",
       product_new: true,
       product_quantity: 10,
       pic: pic,
@@ -34,7 +39,7 @@ export default class AddAnkara extends Component {
       picLoading: false,
       dataLoading: false,
       successResponse: "",
-      error: "",
+      error: false,
       product_token: ""
     };
   }
@@ -70,6 +75,7 @@ export default class AddAnkara extends Component {
       error: ""
     });
   };
+  notify = () => toast("item added successfully");
   handleClearToken = () => {
     this.setState({
       product_token: "",
@@ -82,7 +88,7 @@ export default class AddAnkara extends Component {
     fd.append("image", this.state.image, this.state.image.name);
     axios
       .post(
-        `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products/image
+        ` https://europe-west1-easy-shop-53cc2.cloudfunctions.net/api/products/image
     `,
         fd
       )
@@ -123,6 +129,15 @@ export default class AddAnkara extends Component {
     if (this.state.product_cat == "Dominion") {
       i = 1;
     }
+    if (this.state.product_cat == "Holland Wax") {
+      i = 2;
+    }
+    if (this.state.product_cat == "Aunty K") {
+      i = 0;
+    }
+    if (this.state.product_cat == "Delight") {
+      i = 1;
+    }
     if (this.state.product_cat == "Holland") {
       i = 2;
     }
@@ -135,24 +150,37 @@ export default class AddAnkara extends Component {
       product_new: true,
       product_quantity: 10,
       product_cat: this.state.product_cat,
-      product_color: this.state.product_color
+      product_color: this.state.product_color,
+      product_sec_cat: this.state.product_sec_cat
     };
-    // console.log(newItem);
+    console.log(newItem);
     axios
       .post(
-        "https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products",
+        " https://europe-west1-easy-shop-53cc2.cloudfunctions.net/api/products",
         newItem
       )
       .then(res => {
-        this.setState({ product_token: res.data });
-        if (!this.state.product_token) {
+        this.setState({ product_token: res.data, dataLoading: false });
+        if (this.state.product_token) {
           // this.setState({ product_token: res.data });
+          this.notify();
           console.log("success");
+          this.setState({
+            pic: pic,
+            imagePreviewUrl: ""
+          });
+          event.target.reset();
         } else {
           console.log("fail");
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.setState({
+          error: true,
+          dataLoading: false
+        });
+        toast("Something went wrong", { type: "error" });
+      });
   };
 
   render() {
@@ -196,9 +224,9 @@ export default class AddAnkara extends Component {
                 <option value=""> product category</option>
                 <option value="Chiganvy">Chiganvy</option>
                 <option value="Dominion">Dominion</option>
-                <option value="Holland">Holland</option>
-                <option value="Dominion">Aunty K</option>
-                <option value="Dominion">Delight</option>
+                <option value="Holland Wax">Holland Wax</option>
+                <option value="Aunty K">Aunty K</option>
+                <option value="Delight">Delight</option>
               </select>
               <select
                 name="product_color"
@@ -209,16 +237,23 @@ export default class AddAnkara extends Component {
                 <option value="green">green</option>
                 <option value="blue">blue</option>
                 <option value="red">red</option>
+                <option value="blue">red green</option>
+                <option value="red">red</option>
                 <option value="others">others</option>
               </select>
               <select name="price" onChange={this.handleChange} required>
                 <option value="">product price</option>
                 <option value="5000">₦ 5000</option>
-                <option value="5000">₦ 5500</option>
+                <option value="5500">₦ 5500</option>
                 <option value="10000">₦10000</option>
               </select>
-              {product_token ? <button>success</button> : <button>Add</button>}
+              {this.state.dataLoading ? (
+                <RingLoad color={"#0063ff"} />
+              ) : (
+                <button>Add</button>
+              )}
             </form>
+            <ToastContainer hideProgressBar />
           </FormBody>
         </FormContainer>
       </>

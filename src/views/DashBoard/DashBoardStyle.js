@@ -117,37 +117,19 @@ const ProductTable = styled.div`
   margin-top: 5%;
   background: #c4c4c4;
   border-radius: 4px;
-
-  li {
-    margin-right: 24.5%;
-    text-align: center;
-  }
   ul:nth-child(even) {
     background: white;
   }
-  @media all and (min-width: 768px) {
-    margin-top: 10px;
-  }
 `;
-const ProductTableHeader = styled.div`
+const ProductTableHeader = styled.ul`
   margin-top: 20px;
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  font-size: 0.9rem;
-  font-weight: 900;
-  color: black;
-
-  div {
-    margin-top: 20px;
-    display: flex;
-    width: 80%;
-    margin-right: -50px;
-    border: 1px solid green;
-    justify-content: center;
-  }
+  font-size: 0.7rem;
+  padding: 0 5px;
 `;
 
 const ProductList = styled(ProductTableHeader)`

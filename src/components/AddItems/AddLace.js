@@ -7,22 +7,31 @@ import {
   FormContainer,
   FormBody,
   PictureContainer,
-  CircleLoad
+  CircleLoad,
+  RingLoad
 } from "./AddItemstyle";
 import pic from "../../images/thumb.jpg";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const des = [
+  "High Quality Swiss Voile Laces Switzerland Printed Cotton, African Dry Cotton Lace Fabric ",
+  "white lace fabric 2019 high quality lace nigerian lace fabric for women dress african tulle lace",
+  "Latest Embroidered Tulle Lace African  High Quality wax Lace Fabric Trim Sewing Women DIY Dress Party Nigerian Laces"
+];
+toast.configure();
 export default class AddLace extends Component {
   constructor(props) {
     super(props);
     this.state = {
       createdAt: Date.now(),
-      description: "",
+      description: des,
       image: "",
       image_url: "",
       name: "",
-      price: 2,
+      price: "",
       product_cat: "",
-      product_color: "others",
+      product_sec_cat: "lace",
+      product_color: "",
       product_new: true,
       product_quantity: 10,
       pic: pic,
@@ -30,7 +39,8 @@ export default class AddLace extends Component {
       picLoading: false,
       dataLoading: false,
       successResponse: "",
-      error: ""
+      error: false,
+      product_token: ""
     };
   }
   componentDidMount() {
@@ -50,7 +60,8 @@ export default class AddLace extends Component {
         },
         () => {
           this.setState({
-            pic: this.state.imagePreviewUrl
+            pic: this.state.imagePreviewUrl,
+            picLoading: true
           });
           this.imageUploadHandler();
         }
@@ -59,12 +70,25 @@ export default class AddLace extends Component {
 
     reader.readAsDataURL(image);
   };
+  handleClearError = () => {
+    this.setState({
+      error: ""
+    });
+  };
+  notify = () => toast("item added successfully");
+  handleClearToken = () => {
+    this.setState({
+      product_token: "",
+      dataLoading: true
+    });
+  };
   imageUploadHandler = () => {
+    this.handleClearError();
     const fd = new FormData();
     fd.append("image", this.state.image, this.state.image.name);
     axios
       .post(
-        `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products/image
+        `https://europe-west1-easy-shop-53cc2.cloudfunctions.net/api/products/image
     `,
         fd
       )
@@ -73,12 +97,17 @@ export default class AddLace extends Component {
       })
       .then(data => {
         this.setState({
+          picLoading: false,
           pic: data.imageUrl,
-          successResponse: data.message,
-          error: data.error
+          successResponse: data.message
         });
       })
-      .then(console.log("image upload successful"));
+      .catch(error => {
+        this.setState({
+          error: error
+        });
+        throw error;
+      });
   };
 
   handleChange = event => {
@@ -92,33 +121,92 @@ export default class AddLace extends Component {
   ////////  Data Submit Ankara//////////
   onSubmit = event => {
     event.preventDefault();
+    this.handleClearToken();
+    let i = 0;
+    if (this.state.product_cat == "Swiss Lace") {
+      i = 0;
+    }
+    if (this.state.product_cat == "Voile Lace") {
+      i = 1;
+    }
+    if (this.state.product_cat == "Lace") {
+      i = 2;
+    }
     const newItem = {
       createdAt: Date.now(),
-      description: "",
+      description: this.state.description[i],
       image_url: this.state.pic,
-      name: `${this.state.product_cat} Ankara Fabric ${this.state.product_color} pattern`,
+      name: `${this.state.product_cat} Fabric ${this.state.product_color} pattern`,
       price: this.state.price,
       product_new: true,
       product_quantity: 10,
       product_cat: this.state.product_cat,
-      product_color: this.state.product_color
+      product_color: this.state.product_color,
+      product_sec_cat: this.state.product_sec_cat
     };
-    console.log(newItem);
+    // console.log(newItem);
+    axios
+      .post(
+        " https://europe-west1-easy-shop-53cc2.cloudfunctions.net/api/products",
+        newItem
+      )
+      .then(res => {
+        this.setState({ product_token: res.data, dataLoading: false });
+        if (this.state.product_token) {
+          // this.setState({ product_token: res.data });
+          this.notify();
+          console.log("success");
+          this.setState({
+            pic: pic,
+            imagePreviewUrl: ""
+          });
+        } else {
+          console.log("fail");
+        }
+      })
+      .catch(err => {
+        this.setState({
+          error: true,
+          dataLoading: false
+        });
+        toast("Something went wrong", { type: "error" });
+      });
   };
 
   render() {
+    const { picLoading, error, product_token } = this.state;
+    console.log(error);
+    console.log(product_token);
     return (
       <>
         <HeaderText>
           <h3>Add Lace</h3>
         </HeaderText>
         <FormContainer>
-          <PictureContainer pic={this.state.pic}>
-            <div></div>
-            <span></span>
-            <input type="file" onChange={this.fileSelectedHandler} />
-            <button> upload</button>
-          </PictureContainer>
+          {!picLoading ? (
+            <PictureContainer pic={this.state.pic}>
+              <div></div>
+              <span></span>
+              <input type="file" onChange={this.fileSelectedHandler} />
+              <button> upload</button>
+            </PictureContainer>
+          ) : (
+            <PictureContainer>
+              <div>
+                {error ? (
+                  <h4>
+                    oopps! something went wrong <br />
+                    please try again
+                  </h4>
+                ) : (
+                  <CircleLoad color={"#0063ff"} />
+                )}
+              </div>
+              <span></span>
+              <input type="file" onChange={this.fileSelectedHandler} />
+              {error ? <button> retry</button> : <button> upload</button>}
+            </PictureContainer>
+          )}
 
           <FormBody>
             <form onSubmit={this.onSubmit}>
@@ -128,29 +216,39 @@ export default class AddLace extends Component {
                 <option value="Voile Lace">Voile Lace</option>
                 <option value="Lace">Lace</option>
               </select>
-              <select name="product_color" onChange={this.handleChange}>
+              <select
+                name="product_color"
+                onChange={this.handleChange}
+                required
+              >
                 <option value="">product color</option>
                 <option value="green">green</option>
                 <option value="blue">blue</option>
                 <option value="red">red</option>
+                <option value="blue">red green</option>
+                <option value="red">red</option>
                 <option value="others">others</option>
               </select>
-              <select name="price" onChange={this.handleChange}>
+              <select name="price" onChange={this.handleChange} required>
                 <option value="">product price</option>
+                <option value="10000">₦ 10000</option>
                 <option value="15000">₦ 15000</option>
-                <option value="25000">₦ 25000</option>
-                <option value="10000">₦35000</option>
+                <option value="25000">₦25000</option>
+                <option value="35000">₦35000</option>
               </select>
-
-              <button>Add</button>
+              {this.state.dataLoading ? (
+                <RingLoad color={"#0063ff"} />
+              ) : (
+                <button>Add</button>
+              )}
             </form>
+            <ToastContainer hideProgressBar />
           </FormBody>
         </FormContainer>
       </>
     );
   }
 }
-
 AddLace.defaultProps = {
   createdAt: Date.now(),
   description: "soft fablic",
@@ -162,6 +260,5 @@ AddLace.defaultProps = {
   product_new: true,
   product_quantity: 3
 };
-{
-  /* <CircleLoad />; */
-}
+
+//https://us-central1-easy-shop-53cc2.cloudfunctions.net/api

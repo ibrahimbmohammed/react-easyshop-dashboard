@@ -1,12 +1,21 @@
 import styled from "styled-components";
-import { Circle, Heart, Hourglass, Ellipsis } from "react-spinners-css";
+import { Ellipsis, Ring } from "react-spinners-css";
 
 const CircleLoad = styled(Ellipsis)`
-  color: #0063ff;
-
-  width: 50px;
-  margin-left: 38%;
+  margin-left: 27%;
   margin-top: 20%;
+
+  @media all and (min-width: 768px) {
+    width: 50px;
+    margin-left: 38%;
+    margin-top: 20%;
+  }
+`;
+const RingLoad = styled(Ring)`
+  width: 25px;
+  @media all and (min-width: 768px) {
+    width: 45px;
+  }
 `;
 const HeaderText = styled.span`
   width: 100%;
@@ -16,7 +25,6 @@ const HeaderText = styled.span`
   align-items: center;
 
   margin-top: 4%;
-  @media all and (min-width: 768px) {
     font-size: 20px;
     margin-top: ;
   }
@@ -138,4 +146,11 @@ const FormBody = styled.div`
   }
 `;
 
-export { HeaderText, FormContainer, PictureContainer, FormBody, CircleLoad };
+export {
+  HeaderText,
+  FormContainer,
+  PictureContainer,
+  FormBody,
+  CircleLoad,
+  RingLoad
+};

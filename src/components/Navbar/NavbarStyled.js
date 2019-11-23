@@ -8,8 +8,12 @@ const Header = styled.header`
   display: flex;
   width: 100%;
   height: 50px;
-  background: ${props => props.theme.background};
+  background: #0063ff;
   justify-content: space-between;
+  h5 {
+    background: transparent;
+    display: none;
+  }
 
   position: fixed;
   top: 0;
@@ -38,6 +42,8 @@ const NavbarBtn = styled.span`
 `;
 //MAIN ICON
 const MainIcon = styled(MainIconSvg)`
+  display: none;
+
   width: 100%;
   height: 100%;
   cursor: pointer;

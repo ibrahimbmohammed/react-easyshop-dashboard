@@ -11,6 +11,7 @@ import {
   ProductList,
   ProductTableHeader
 } from "./DashBoardStyle";
+import SimpleTable from "../../components/Tables/Table";
 import LineChart from "../../components/GraphComponents/LineChart";
 import BarChart from "../../components/GraphComponents/BarChart";
 // import PieChart from "../../components/GraphComponents/PieChart";
@@ -21,6 +22,7 @@ import ankara3 from "../../images/IMG-20190919-WA0014.jpg";
 import Axios from "axios";
 
 // dummy data
+
 const products = [
   {
     pic: ankara,
@@ -64,9 +66,12 @@ export default class DashBoard extends Component {
     window.addEventListener("resize", this.updateDimensions);
     this.handleData();
   }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleScroll);
+  }
   handleData = () => {
     Axios.get(
-      `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products
+      `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products/latest
     `
     )
       .then(doc => {
@@ -90,7 +95,7 @@ export default class DashBoard extends Component {
     return (
       <>
         <Main>
-          {currentWidth <= 738 ? (
+          {!currentWidth <= 738 ? (
             <>
               {" "}
               <TopCard>
@@ -148,32 +153,8 @@ export default class DashBoard extends Component {
         </SectionHeaderContainer>
         <ProductTable>
           <ProductTableHeader>
-            <span>
-              <li>Product</li>
-            </span>
-
-            <div>
-              <li>Name</li>
-              <li>sold Already</li>
-              <li>Date</li>
-            </div>
+            <SimpleTable items={items} isLoading={isLoading}></SimpleTable>
           </ProductTableHeader>
-          <br></br>
-          <hr></hr>
-          {!isLoading
-            ? items.map((item, i) => {
-                return (
-                  <ProductList pic={item.image_url} key={i}>
-                    <span></span>
-                    <div>
-                      <div>{item.product_cat}</div>
-                      <div>{item.product_quantity}</div>
-                      <div>{dayjs(item.createdAt).fromNow()}</div>
-                    </div>
-                  </ProductList>
-                );
-              })
-            : null}
         </ProductTable>
       </>
     );
