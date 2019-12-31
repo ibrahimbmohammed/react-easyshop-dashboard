@@ -30,7 +30,7 @@ export default class AddLace extends Component {
       name: "",
       price: "",
       product_cat: "",
-      product_sec_cat: "lace",
+      product_sec_cat: "Lace",
       product_color: "",
       product_new: true,
       product_quantity: 10,
@@ -225,8 +225,11 @@ export default class AddLace extends Component {
                 <option value="green">green</option>
                 <option value="blue">blue</option>
                 <option value="red">red</option>
-                <option value="blue">red green</option>
-                <option value="red">red</option>
+                <option value="yellow">yellow</option>
+                <option value="purple">purple</option>
+                <option value="gray">gray</option>
+
+                <option value="brown">brown</option>
                 <option value="others">others</option>
               </select>
               <select name="price" onChange={this.handleChange} required>

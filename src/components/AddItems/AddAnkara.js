@@ -30,7 +30,7 @@ export default class AddAnkara extends Component {
       name: "",
       price: "",
       product_cat: "",
-      product_sec_cat: "ankara",
+      product_sec_cat: "Ankara",
       product_color: "",
       product_new: true,
       product_quantity: 10,
@@ -179,7 +179,7 @@ export default class AddAnkara extends Component {
           error: true,
           dataLoading: false
         });
-        toast("Something went wrong", { type: "error" });
+        // toast("Something went wrong", { type: "error" });
       });
   };
 
@@ -237,8 +237,9 @@ export default class AddAnkara extends Component {
                 <option value="green">green</option>
                 <option value="blue">blue</option>
                 <option value="red">red</option>
-                <option value="blue">red green</option>
-                <option value="red">red</option>
+                <option value="red green">red green</option>
+                <option value="purple">purple</option>
+                <option value="brown">brown</option>
                 <option value="others">others</option>
               </select>
               <select name="price" onChange={this.handleChange} required>

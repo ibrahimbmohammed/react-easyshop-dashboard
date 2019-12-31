@@ -28,7 +28,7 @@ export default function CenteredGrid({
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
-        {isLoading ? (
+        {!isLoading ? (
           items.map(item => (
             <Grid key={item.createdAt} item xs={6} md={4}>
               {/* <Paper className={classes.paper}>xs=12</Paper> */}

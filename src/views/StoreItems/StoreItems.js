@@ -2,266 +2,15 @@ import React, { Component } from "react";
 import Grid from "../../components/Grid/Grid";
 import pic from "../../images/IMG-20190919-WA0016.jpg";
 import Axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const item = [
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  },
-  {
-    body: {
-      createdAt: "2019-10-26T02:42:25.869Z",
-      description:
-        "High Quality African Real Veritable Wax 6 Yards Guaranteed Dutch Wax African Veritable Wax Veritable For Ankara Dresses 2019",
-      image_url: pic,
-      name: "Chiganvy Ankara Fabric blue pattern",
-      price: "5000",
-      product_cat: "Chiganvy",
-      product_new: true,
-      product_quantity: 10
-    },
-    id: "TVKaVUHH9efuVPNRIIPD"
-  }
-];
+toast.configure();
 export default class StoreItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: item,
+      items: "",
       isLoading: true,
       error: false,
       newitems: ""
@@ -270,21 +19,21 @@ export default class StoreItems extends Component {
 
   componentDidMount() {
     this.props.handleToggle();
-    // this.setState({ items: this.state.iteems });
-    // this.handleData();
+    this.setState({ items: this.state.iteems });
+    this.handleData();
   }
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.items !== prevProps.items) {
-  //     this.setState({ newitems: this.state.items });
-  //   }
-  // }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return nextState.items !== this.state.items; // Don't re-render if name is equal
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.items !== prevProps.items) {
+      this.setState({ newitems: this.state.items });
+    }
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.items !== this.state.items; // Don't re-render if name is equal
+  }
 
   handleData = () => {
     Axios.get(
-      `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products
+      `https://europe-west1-easy-shop-53cc2.cloudfunctions.net/api/products
     `
     )
       .then(doc => {
@@ -294,7 +43,13 @@ export default class StoreItems extends Component {
         });
         console.log(this.state.items);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.setState({
+          error: true,
+          dataLoading: false
+        });
+        toast("Something went wrong", { type: "error" });
+      });
   };
   handleUiUpdate = Id => {
     const filteredItems = this.state.items.filter(item => item.id !== Id);
@@ -306,13 +61,23 @@ export default class StoreItems extends Component {
   handleDelete = Id => {
     console.log(Id);
     Axios.get(
-      `https://us-central1-easy-shop-53cc2.cloudfunctions.net/api/products/delete/${Id}`
+      `https://europe-west1-easy-shop-53cc2.cloudfunctions.net/api/products/delete/${Id}`
     )
       .then(doc => {
-        console.log(this.state.newitems);
+        this.setState({
+          dataLoading: false
+          // items: doc.data
+        });
+        this.handleData();
+        toast("item deleted", { type: "success" });
       })
-      .catch(err => console.error(err));
-    this.handleUiUpdate(Id);
+      .catch(err => {
+        this.setState({
+          error: true,
+          dataLoading: false
+        });
+        toast("Something went,please try again", { type: "error" });
+      });
   };
 
   render() {
