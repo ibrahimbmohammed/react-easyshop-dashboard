@@ -235,6 +235,7 @@ export default class AddLace extends Component {
               <select name="price" onChange={this.handleChange} required>
                 <option value="">product price</option>
                 <option value="10000">₦ 10000</option>
+                <option value="11000">₦ 11000</option>
                 <option value="15000">₦ 15000</option>
                 <option value="25000">₦25000</option>
                 <option value="35000">₦35000</option>
